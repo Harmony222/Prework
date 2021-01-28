@@ -24,6 +24,7 @@ The following **additional** features are implemented:
 * [x] Settings menu with:
     - [x] dark mode option
     - [x] default tip percentage option
+* [x] User can view the app on various devices and orientations
     
 - [ ] List anything else that you can get done to improve the app functionality!
 

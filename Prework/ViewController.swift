@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController {
     @IBOutlet weak var tipPercentageLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -19,14 +17,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = "Tip Calculator"
-//        let defaults = UserDefaults.standard
-//        defaults.set(0, forKey: "defaultTipPercentIndex")
+        // set bill amount to be first responder and pull up keyboard
         billAmountTextField.becomeFirstResponder()
-//        overrideUserInterfaceStyle = .dark
+        // use this to dismiss keyboard if screen is tapped
+        // https://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
         
     @IBAction func onTap(_ sender: Any) {
     }
+    
     @IBAction func calculateTip(_ sender: Any) {
         // Get initial bill amount and calculate tip
         let bill = Double(billAmountTextField.text!) ?? 0
@@ -46,7 +51,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("view will appear")
+//        print("view will appear")
         // This is a good place to retrieve the default tip percentage from UserDefaults
         // and use it to update the tip amount
         let defaults = UserDefaults.standard
@@ -61,17 +66,14 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did appear")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        print("view will disappear")
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("view did disappear")
     }
     
 }

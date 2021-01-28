@@ -19,7 +19,6 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func setDarkModeSetting(_ sender: Any) {
-        print("test")
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "darkMode") == false {
             defaults.set(true, forKey: "darkMode")
@@ -33,7 +32,6 @@ class SettingsViewController: UIViewController {
     @IBAction func setDefaultTip(_ sender: Any) {
         let defaults = UserDefaults.standard
         defaults.set(setTipDefault.selectedSegmentIndex, forKey: "defaultTipPercentIndex")
-                
     }
     
     override func viewWillAppear(_ animated: Bool) {

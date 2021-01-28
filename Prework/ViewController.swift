@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class ViewController: UIViewController {
     @IBOutlet weak var tipPercentageLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
@@ -16,8 +18,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.title = "Tip Calculator"
+//        let defaults = UserDefaults.standard
+//        defaults.set(0, forKey: "defaultTipPercentIndex")
+        billAmountTextField.becomeFirstResponder()
+//        overrideUserInterfaceStyle = .dark
     }
-    
+        
     @IBAction func onTap(_ sender: Any) {
     }
     @IBAction func calculateTip(_ sender: Any) {
@@ -34,5 +41,39 @@ class ViewController: UIViewController {
         totalLabel.text = String(format: "$%.2f", total)
     }
     
+
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("view will appear")
+        // This is a good place to retrieve the default tip percentage from UserDefaults
+        // and use it to update the tip amount
+        let defaults = UserDefaults.standard
+        let defaultPercentIndex = defaults.integer(forKey: "defaultTipPercentIndex")
+        tipAmountSegmentedControl.selectedSegmentIndex = defaultPercentIndex
+        if defaults.bool(forKey: "darkMode") {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did appear")
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        print("view will disappear")
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("view did disappear")
+    }
+    
 }
+
 

@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet weak var tipPercentageLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var billAmountTextField: UITextField!
@@ -17,19 +18,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.title = "Tip Calculator"
-        // set bill amount to be first responder and pull up keyboard
+        // set bill amount to be first responder and display keyboard
         billAmountTextField.becomeFirstResponder()
-        // use this to dismiss keyboard if screen is tapped
-        // https://stackoverflow.com/questions/24126678/close-ios-keyboard-by-touching-anywhere-using-swift
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
     }
-    @objc func dismissKeyboard() {
-        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+
+    @IBAction func onTapScreen(_ sender: Any) {
         view.endEditing(true)
-    }
-        
-    @IBAction func onTap(_ sender: Any) {
     }
     
     @IBAction func calculateTip(_ sender: Any) {
@@ -45,18 +39,18 @@ class ViewController: UIViewController {
         tipPercentageLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
     }
-    
-
-    
-    
+   
+      
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        print("view will appear")
-        // This is a good place to retrieve the default tip percentage from UserDefaults
-        // and use it to update the tip amount
+        // Access User Defaults
         let defaults = UserDefaults.standard
+        
+        // set defaultPercentIndex to equal current user default percent index
         let defaultPercentIndex = defaults.integer(forKey: "defaultTipPercentIndex")
         tipAmountSegmentedControl.selectedSegmentIndex = defaultPercentIndex
+        
+        // set interface style to user selected dark/light interface
         if defaults.bool(forKey: "darkMode") {
             overrideUserInterfaceStyle = .dark
         } else {

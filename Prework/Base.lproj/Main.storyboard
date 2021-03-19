@@ -69,9 +69,10 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vuF-Ex-4cz">
                                 <rect key="frame" x="331" y="138" width="33" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="Vg3-YZ-mxg"/>
+                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="jvg-q9-Wpp"/>
                                 </connections>
                             </textField>
                         </subviews>
@@ -98,7 +99,7 @@
                             <constraint firstItem="EQ1-iD-Lg4" firstAttribute="top" secondItem="auA-l9-Hdt" secondAttribute="bottom" constant="30" id="uCy-lM-Gor"/>
                         </constraints>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="ZGb-Qr-DeQ" appends="YES" id="Y0m-kd-tiv"/>
+                            <outletCollection property="gestureRecognizers" destination="J0x-VA-mTm" appends="YES" id="ZGI-Yp-Xtb"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="wRY-MR-YeI">
@@ -113,17 +114,17 @@
                         <outlet property="billAmountTextField" destination="vuF-Ex-4cz" id="MX7-74-qME"/>
                         <outlet property="tipAmountSegmentedControl" destination="b4J-7b-9dQ" id="CyO-ct-AD4"/>
                         <outlet property="tipPercentageLabel" destination="dh0-dZ-3wJ" id="V40-vY-kgv"/>
-                        <outlet property="totalLabel" destination="78w-h8-ztn" id="2aq-8q-cvW"/>
+                        <outlet property="totalLabel" destination="78w-h8-ztn" id="43L-Ze-XZe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="ZGb-Qr-DeQ">
+                <tapGestureRecognizer id="J0x-VA-mTm">
                     <connections>
-                        <action selector="onTap:" destination="BYZ-38-t0r" id="bJ6-gd-pbJ"/>
+                        <action selector="onTapScreen:" destination="BYZ-38-t0r" id="7aj-gt-hGy"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1618.840579710145" y="158.70535714285714"/>
+            <point key="canvasLocation" x="1297" y="159"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="5J7-jC-OnA">
@@ -185,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pjB-CR-JK1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-133.33333333333334" y="-487.5"/>
+            <point key="canvasLocation" x="2080" y="159"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Xgd-CJ-wOs">
@@ -204,7 +205,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wRZ-Oi-1aw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="531.8840579710145" y="103.79464285714285"/>
+            <point key="canvasLocation" x="520" y="159"/>
         </scene>
     </scenes>
     <resources>
